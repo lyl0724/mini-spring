@@ -22,7 +22,7 @@ public class BeanDefinition {
     private Class<?> beanClass;
 
     //bean所依赖的基本类型和String类型数据
-    private PropertyValues propertyValues;
+    private PropertyValues propertyValues = new PropertyValues();
 
     public void setBeanClassName(String beanClassName) throws ClassNotFoundException {
         this.beanClassName = beanClassName;
