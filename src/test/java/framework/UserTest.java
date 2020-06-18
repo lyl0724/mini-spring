@@ -1,28 +1,17 @@
 package framework;
 
-import framework.beans.BeanDefinition;
-import framework.beans.PropertyValue;
-import framework.beans.PropertyValues;
-import framework.beans.config.XmlBeanDefinitionsReader;
-import framework.beans.factory.AutowireCapableBeanFactory;
-import framework.beans.factory.BeanFactory;
-import framework.core.io.ResourceLoader;
+import framework.context.ApplicationContext;
+import framework.context.ClassPathXmlApplicationContext;
 import org.junit.Test;
 
 public class UserTest {
     @Test
     public void test() throws Exception {
-        XmlBeanDefinitionsReader xmlBeanDefinitionsReader = new XmlBeanDefinitionsReader(new ResourceLoader());
-        xmlBeanDefinitionsReader.loadBeanDefinitions("beans.xml");
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("beans.xml");
+        User user = (User) applicationContext.getBean("user");
+        School school = (School) applicationContext.getBean("school");
 
-        BeanFactory beanFactory = new AutowireCapableBeanFactory();
-        for (String beanName : xmlBeanDefinitionsReader.getBeanDefinitionMap().keySet()) {
-            beanFactory.registerBeanDefinition(beanName, xmlBeanDefinitionsReader.getBeanDefinitionMap().get(beanName));
-        }
-
-        User user = (User) beanFactory.getBean("user");
-        School school = (School) beanFactory.getBean("school");
-        user.broadcast();
-        school.broadcast();
+        System.out.println(user);
+        System.out.println(school);
     }
 }

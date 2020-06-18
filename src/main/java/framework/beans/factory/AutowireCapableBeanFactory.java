@@ -15,7 +15,7 @@ public class AutowireCapableBeanFactory extends AbstractBeanFactory {
     @Override
     public Object doCreateBean(BeanDefinition beanDefinition) throws Exception {
         Object bean = beanDefinition.getBeanClass().newInstance();
-        //注入bean所需的属性
+        //这里一定是先将半成品bean给放入容器中，再去注入这个半成品bean的其他属性，否则在循环依赖的情况下，会StackOverFlow
         beanDefinition.setBean(bean);
         applyPropertyValues(bean, beanDefinition);
         return bean;

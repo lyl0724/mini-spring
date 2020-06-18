@@ -31,7 +31,6 @@ public abstract class AbstractBeanFactory implements BeanFactory {
         return bean;
     }
 
-    @Override
     public void registerBeanDefinition(String beanName, BeanDefinition beanDefinition) throws Exception {
         beanDefinitionMap.put(beanName, beanDefinition);
     }
