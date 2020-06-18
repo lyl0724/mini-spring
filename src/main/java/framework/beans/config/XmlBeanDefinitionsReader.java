@@ -1,6 +1,7 @@
 package framework.beans.config;
 
 import framework.beans.BeanDefinition;
+import framework.beans.BeanReference;
 import framework.beans.PropertyValue;
 import framework.core.io.ResourceLoader;
 import org.w3c.dom.Document;
@@ -78,7 +79,15 @@ public class XmlBeanDefinitionsReader extends AbstractBeanDefinitionsReader {
                 Element propertyElement = (Element) node;
                 String name = propertyElement.getAttribute("name");
                 String value = propertyElement.getAttribute("value");
-                beanDefinition.getPropertyValues().addProperty(new PropertyValue(name, value));
+                //该property对应的属性是基本类型或者String
+                if (value != null && value.length() > 0) {
+                    beanDefinition.getPropertyValues().addProperty(new PropertyValue(name, value));
+                } else {
+                    //该property标签对应的属性是别的引用类型
+                    //创建一个BeanReference对象，用于记录当前引用的是bean的名字是什么
+                    String refBeanName = propertyElement.getAttribute("ref");
+                    beanDefinition.getPropertyValues().addProperty(new PropertyValue(name, new BeanReference(refBeanName)));
+                }
             }
         }
     }

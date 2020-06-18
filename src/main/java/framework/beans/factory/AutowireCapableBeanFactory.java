@@ -1,6 +1,7 @@
 package framework.beans.factory;
 
 import framework.beans.BeanDefinition;
+import framework.beans.BeanReference;
 import framework.beans.PropertyValue;
 
 import java.lang.reflect.Field;
@@ -15,18 +16,26 @@ public class AutowireCapableBeanFactory extends AbstractBeanFactory {
     public Object doCreateBean(BeanDefinition beanDefinition) throws Exception {
         Object bean = beanDefinition.getBeanClass().newInstance();
         //注入bean所需的属性
+        beanDefinition.setBean(bean);
         applyPropertyValues(bean, beanDefinition);
         return bean;
     }
 
-    private void applyPropertyValues(Object bean, BeanDefinition beanDefinition) throws NoSuchFieldException, IllegalAccessException {
+    private void applyPropertyValues(Object bean, BeanDefinition beanDefinition) throws Exception {
         for (PropertyValue propertyValue : beanDefinition.getPropertyValues().getPropertyValues()) {
             Field declaredField = beanDefinition.getBeanClass().getDeclaredField(propertyValue.getName());
             declaredField.setAccessible(true);
-            //属性的类型可能是基本类型或者String，如果是基本类型，这里需要做将String做类型转换后再设置
-            Type fieldType = declaredField.getType();
-            String valueStr = propertyValue.getValue();
-            declaredField.set(bean, typeConversion(fieldType, valueStr));
+            Object value = propertyValue.getValue();
+            //判断要注入的属性是否为引用类型
+            if (value instanceof BeanReference) {
+                BeanReference beanReference = (BeanReference) value;
+                String refBeanName = beanReference.getBeanName();
+                Object refBean = getBean(refBeanName);
+                declaredField.set(bean, refBean);
+            } else {
+                Type fieldType = declaredField.getType();
+                declaredField.set(bean, typeConversion(fieldType, (String)value));
+            }
         }
     }
 

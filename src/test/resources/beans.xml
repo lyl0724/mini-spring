@@ -10,6 +10,12 @@
         <property name="age" value="24"></property>
         <property name="isBoy" value="true"></property>
         <property name="height" value="1.72"></property>
+        <property name="school" ref="school"></property>
+    </bean>
+
+    <bean name="school" class="framework.School">
+        <property name="name" value="pku"></property>
+        <property name="user" ref="user"></property>
     </bean>
 
 </beans>

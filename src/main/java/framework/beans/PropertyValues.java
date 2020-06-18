@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *  Bean依赖的所有基本类型和引用类型
+ *  Bean的所有依赖
  */
 @Data
 public class PropertyValues {

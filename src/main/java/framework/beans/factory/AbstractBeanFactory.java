@@ -15,15 +15,24 @@ public abstract class AbstractBeanFactory implements BeanFactory {
 
     private Map<String, BeanDefinition> beanDefinitionMap = new HashMap<>();
 
+    /**
+     *  lazy-init，在用到bean的时候再创建实例
+     */
     @Override
-    public Object getBean(String beanName) {
-        return beanDefinitionMap.get(beanName).getBean();
+    public Object getBean(String beanName) throws Exception {
+        BeanDefinition beanDefinition = beanDefinitionMap.get(beanName);
+        if (beanDefinition == null) {
+            throw new IllegalArgumentException(String.format("No bean named %s is defined", beanName));
+        }
+        Object bean = beanDefinition.getBean();
+        if (bean == null) {
+            bean = doCreateBean(beanDefinition);
+        }
+        return bean;
     }
 
     @Override
     public void registerBeanDefinition(String beanName, BeanDefinition beanDefinition) throws Exception {
-        Object bean = doCreateBean(beanDefinition);
-        beanDefinition.setBean(bean);
         beanDefinitionMap.put(beanName, beanDefinition);
     }
 

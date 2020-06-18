@@ -21,6 +21,8 @@ public class UserTest {
         }
 
         User user = (User) beanFactory.getBean("user");
-        System.out.println(user);
+        School school = (School) beanFactory.getBean("school");
+        user.broadcast();
+        school.broadcast();
     }
 }
