@@ -5,17 +5,6 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
-    <bean name="user" class="framework.User">
-        <property name="name" value="liuyulin"></property>
-        <property name="age" value="24"></property>
-        <property name="isBoy" value="true"></property>
-        <property name="height" value="1.72"></property>
-        <property name="school" ref="school"></property>
-    </bean>
-
-    <bean name="school" class="framework.School">
-        <property name="name" value="pku"></property>
-        <property name="user" ref="user"></property>
-    </bean>
+    <bean name="accountService" class="aop.account.AccountServiceImpl"></bean>
 
 </beans>
