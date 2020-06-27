@@ -1,21 +1,19 @@
-package framework.aop;
+package framework.beans.aop.advice;
 
+import framework.beans.aop.target.TargetSource;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import org.aopalliance.intercept.MethodInvocation;
+
 import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Method;
 
 /**
- *  被代理对象的方法信息
+ *  这个类是封装了目标对象的所有方法，可以看作是一个JoinPoint的实现
  */
 @AllArgsConstructor
-@NoArgsConstructor
 public class ReflectiveMethodInvocation implements MethodInvocation {
-    private Object target;
-
+    private TargetSource target;
     private Method method;
-
     private Object[] args;
 
     @Override
@@ -28,9 +26,12 @@ public class ReflectiveMethodInvocation implements MethodInvocation {
         return args;
     }
 
-    //执行被代理对象的方法，也就是增强前的逻辑
+    /**
+     *  执行method，即调用被代理对象的方法
+     */
     @Override
     public Object proceed() throws Throwable {
+        //@TODO 后续修改可以让它支持拦截链
         return method.invoke(target, args);
     }
 
