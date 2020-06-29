@@ -1,6 +1,6 @@
 package framework.beans.aop.proxy;
 
-import framework.beans.aop.advice.ReflectiveMethodInvocation;
+import framework.beans.aop.joinpoint.ReflectiveMethodInvocation;
 import org.aopalliance.intercept.MethodInterceptor;
 
 import java.lang.reflect.InvocationHandler;
@@ -9,7 +9,10 @@ import java.lang.reflect.Proxy;
 
 /**
  *  创建基于JDK动态代理的代理对象，实现了基本的织入功能
- *  在通过对Pointcut和Advice的配置后，我们就可以通过这个类完成织入，从而获得增强后的代理对象
+ *  其中advisedSupport提供了创建代理对象所需要的：
+ *      1、目标对象的信息
+ *      2、方法拦截器，即用户自己实现的横切逻辑
+ *      3、方法匹配器，及哪些方法需要被增强
  */
 public class JdkDynamicAopProxy extends AbstractAopProxy implements InvocationHandler {
     public JdkDynamicAopProxy(AdvisedSupport advisedSupport) {

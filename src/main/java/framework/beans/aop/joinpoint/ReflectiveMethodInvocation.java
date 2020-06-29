@@ -1,4 +1,4 @@
-package framework.beans.aop.advice;
+package framework.beans.aop.joinpoint;
 
 import framework.beans.aop.target.TargetSource;
 import lombok.AllArgsConstructor;
@@ -12,9 +12,9 @@ import java.lang.reflect.Method;
  */
 @AllArgsConstructor
 public class ReflectiveMethodInvocation implements MethodInvocation {
-    private TargetSource target;
-    private Method method;
-    private Object[] args;
+    protected TargetSource target;
+    protected Method method;
+    protected Object[] args;
 
     @Override
     public Method getMethod() {
