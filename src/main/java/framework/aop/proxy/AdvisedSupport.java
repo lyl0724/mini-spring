@@ -1,7 +1,7 @@
-package framework.beans.aop.proxy;
+package framework.aop.proxy;
 
-import framework.beans.aop.pointcut.MethodMatcher;
-import framework.beans.aop.target.TargetSource;
+import framework.aop.pointcut.MethodMatcher;
+import framework.aop.target.TargetSource;
 import lombok.Data;
 import org.aopalliance.intercept.MethodInterceptor;
 

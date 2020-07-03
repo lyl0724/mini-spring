@@ -1,7 +1,7 @@
-package framework.beans.aop.proxy;
+package framework.aop.proxy;
 
-import framework.beans.aop.joinpoint.ReflectiveMethodInvocation;
-import framework.beans.aop.target.TargetSource;
+import framework.aop.joinpoint.ReflectiveMethodInvocation;
+import framework.aop.target.TargetSource;
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;

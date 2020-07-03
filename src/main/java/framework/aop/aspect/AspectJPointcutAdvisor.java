@@ -1,6 +1,6 @@
-package framework.beans.aop.aspect;
+package framework.aop.aspect;
 
-import framework.beans.aop.pointcut.AspectJExpressionPointcut;
+import framework.aop.pointcut.AspectJExpressionPointcut;
 import lombok.Getter;
 import org.aopalliance.aop.Advice;
 

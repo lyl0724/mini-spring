@@ -1,6 +1,6 @@
-package framework.beans.aop.joinpoint;
+package framework.aop.joinpoint;
 
-import framework.beans.aop.target.TargetSource;
+import framework.aop.target.TargetSource;
 import lombok.AllArgsConstructor;
 import org.aopalliance.intercept.MethodInvocation;
 

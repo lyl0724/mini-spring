@@ -1,4 +1,4 @@
-package framework.beans.aop.pointcut;
+package framework.aop.pointcut;
 
 /**
  *  切点，确定哪些类和哪些方法需要被增强

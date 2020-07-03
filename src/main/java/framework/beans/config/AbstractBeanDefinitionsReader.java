@@ -1,7 +1,6 @@
 package framework.beans.config;
 
 import framework.beans.BeanDefinition;
-import framework.beans.config.BeanDefinitionsReader;
 import framework.core.io.ResourceLoader;
 
 import java.util.HashMap;
@@ -13,12 +12,12 @@ import java.util.Map;
  *  这里不对具体的解析过程进行实现，只是定义了BeanDefinition要如何存储
  */
 public abstract class AbstractBeanDefinitionsReader implements BeanDefinitionsReader {
-    private Map<String, BeanDefinition> beanDefinitionMap;
+    private Map<String, BeanDefinition> beanDefinitionRegistry;
 
     private final ResourceLoader resourceLoader;
 
     protected AbstractBeanDefinitionsReader(ResourceLoader resourceLoader) {
-        this.beanDefinitionMap = new HashMap<>();
+        this.beanDefinitionRegistry = new HashMap<>();
         this.resourceLoader = resourceLoader;
     }
 
@@ -29,7 +28,7 @@ public abstract class AbstractBeanDefinitionsReader implements BeanDefinitionsRe
         return resourceLoader;
     }
 
-    public Map<String, BeanDefinition> getBeanDefinitionMap() {
-        return beanDefinitionMap;
+    public Map<String, BeanDefinition> getBeanDefinitionRegistry() {
+        return beanDefinitionRegistry;
     }
 }

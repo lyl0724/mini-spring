@@ -1,4 +1,4 @@
-package framework.beans.aop.proxy;
+package framework.aop.proxy;
 
 import lombok.AllArgsConstructor;
 

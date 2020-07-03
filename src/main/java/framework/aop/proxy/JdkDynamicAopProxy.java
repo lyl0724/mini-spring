@@ -1,6 +1,6 @@
-package framework.beans.aop.proxy;
+package framework.aop.proxy;
 
-import framework.beans.aop.joinpoint.ReflectiveMethodInvocation;
+import framework.aop.joinpoint.ReflectiveMethodInvocation;
 import org.aopalliance.intercept.MethodInterceptor;
 
 import java.lang.reflect.InvocationHandler;

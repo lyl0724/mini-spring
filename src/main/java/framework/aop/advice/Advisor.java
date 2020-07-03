@@ -1,4 +1,4 @@
-package framework.beans.aop.advice;
+package framework.aop.advice;
 
 import org.aopalliance.aop.Advice;
 

@@ -68,7 +68,7 @@ public class XmlBeanDefinitionsReader extends AbstractBeanDefinitionsReader {
         beanDefinition.setBeanClassName(className);
         //将这个bean标签中properties给注入beanDefinition中
         processProperty(element, beanDefinition);
-        this.getBeanDefinitionMap().put(name, beanDefinition);
+        this.getBeanDefinitionRegistry().put(name, beanDefinition);
     }
 
     private void processProperty(Element element, BeanDefinition beanDefinition) {

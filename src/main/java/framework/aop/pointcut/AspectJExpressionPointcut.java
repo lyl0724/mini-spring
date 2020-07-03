@@ -1,4 +1,4 @@
-package framework.beans.aop.pointcut;
+package framework.aop.pointcut;
 
 import org.aspectj.weaver.tools.PointcutExpression;
 import org.aspectj.weaver.tools.PointcutParser;

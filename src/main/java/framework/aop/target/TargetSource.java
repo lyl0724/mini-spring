@@ -1,4 +1,4 @@
-package framework.beans.aop.target;
+package framework.aop.target;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

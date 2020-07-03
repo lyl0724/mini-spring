@@ -1,4 +1,4 @@
-package framework.beans.aop.pointcut;
+package framework.aop.pointcut;
 
 import java.lang.reflect.Method;
 

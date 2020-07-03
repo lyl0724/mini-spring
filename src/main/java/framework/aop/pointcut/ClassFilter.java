@@ -1,4 +1,4 @@
-package framework.beans.aop.pointcut;
+package framework.aop.pointcut;
 
 public interface ClassFilter {
     //判断该类是否需要被增强
